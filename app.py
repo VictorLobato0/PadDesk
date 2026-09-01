@@ -353,7 +353,7 @@ def main() -> None:
     server = ThreadingHTTPServer((HOST, PORT), Handler)
     url = f"http://{HOST}:{PORT}"
     print(f"PadDesk em {url}")
-    print("F12 = liga/desliga mapeamento  |  F8 = para sequencia")
+    print("F12 = liga/desliga mapeamento  |  F11 = para sequencia")
     threading.Timer(0.4, lambda: webbrowser.open(url)).start()
     try:
         server.serve_forever()

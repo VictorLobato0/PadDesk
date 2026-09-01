@@ -20,7 +20,7 @@ A interface abre em `http://127.0.0.1:8765` e só escuta localmente.
 python app.py
 ```
 
-3. O navegador abre sozinho. **F12** liga/desliga o mapeamento. **F8** para qualquer sequência.
+3. O navegador abre sozinho. **F12** liga/desliga o mapeamento. **F11** para qualquer sequência.
 
 ## Controles suportados
 
@@ -47,7 +47,7 @@ Duplique um template, edite os passos e, se quiser, atribua um botão do control
 | Tecla | Ação |
 | --- | --- |
 | F12 | Liga / desliga o mapeamento do controle |
-| F8 | Para a sequência em execução |
+| F11 | Para a sequência em execução |
 
 ## Licença
 

@@ -116,7 +116,7 @@ function renderHeader() {
   const seq = state.sequence || {};
   const status = $("seq-status");
   if (seq.playing) {
-    status.textContent = `Executando “${seq.name}” — passo ${seq.index + 1}${seq.repeatLeft > 1 ? ` (${seq.repeatLeft} reps)` : ""}. F8 para parar.`;
+    status.textContent = `Executando “${seq.name}” — passo ${seq.index + 1}${seq.repeatLeft > 1 ? ` (${seq.repeatLeft} reps)` : ""}. F11 para parar.`;
   }
 }
 

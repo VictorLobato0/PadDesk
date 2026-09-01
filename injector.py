@@ -162,7 +162,7 @@ _f12_was_down = False
 
 
 def panic_pressed() -> bool:
-    return bool(user32.GetAsyncKeyState(0x77) & 0x8000)  # F8 stops sequences
+    return bool(user32.GetAsyncKeyState(0x7A) & 0x8000)  # F11 stops sequences
 
 
 def mapping_toggle_edge() -> bool:
