@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PadDesk</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <span class="logo">PD</span>
+        <div>
+          <h1>PadDesk</h1>
+          <p>Controle → mouse e teclado · Victor Emanuel Lobato</p>
+        </div>
+      </div>
+      <div class="readouts">
+        <div class="stat">
+          <span>Mouse</span>
+          <strong id="mouse-xy">0, 0</strong>
+        </div>
+        <div class="stat">
+          <span>Tela</span>
+          <strong id="screen-size">—</strong>
+        </div>
+        <div class="stat" id="pad-stat">
+          <span>Controle</span>
+          <strong id="pad-label">desconectado</strong>
+        </div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="mapper-toggle" />
+        <span>Mapear agora</span>
+        <kbd>F12</kbd>
+      </label>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="map">Mapeamento</button>
+      <button class="tab" data-tab="seq">Sequências</button>
+    </nav>
+
+    <main>
+      <section id="view-map" class="view">
+        <div class="grid-map">
+          <article class="card pad-card">
+            <h2>Controle ao vivo</h2>
+            <div class="gamepad" id="gamepad">
+              <div class="rear-panel">
+                <span class="rear-label">Traseira</span>
+                <div class="rear-row">
+                  <button class="face wide" data-btn="LT" title="Gatilho esquerdo">LT</button>
+                  <button class="face wide" data-btn="LB" title="Bumper esquerdo">LB</button>
+                  <button class="face paddle" data-btn="M1">M1</button>
+                  <button class="face paddle" data-btn="M2">M2</button>
+                  <button class="face paddle" data-btn="M3">M3</button>
+                  <button class="face paddle" data-btn="M4">M4</button>
+                  <button class="face wide" data-btn="RB" title="Bumper direito">RB</button>
+                  <button class="face wide" data-btn="RT" title="Gatilho direito">RT</button>
+                </div>
+                <p class="rear-hint">Aperte o paddle. Se M1/M2 não acenderem, use Identificar.</p>
+                <div class="learn-row">
+                  <button type="button" data-learn="M1">Identificar M1</button>
+                  <button type="button" data-learn="M2">Identificar M2</button>
+                  <button type="button" data-learn="M3">Identificar M3</button>
+                  <button type="button" data-learn="M4">Identificar M4</button>
+                </div>
+                <p id="extra-signals" class="rear-hint">Sinal extra: —</p>
+              </div>
+              <div class="pad-body">
+              <div class="cluster left">
+                <button class="face dpad" data-btn="DUP">▲</button>
+                <div class="mid">
+                  <button class="face dpad" data-btn="DLEFT">◀</button>
+                  <button class="face dpad" data-btn="DRIGHT">▶</button>
+                </div>
+                <button class="face dpad" data-btn="DDOWN">▼</button>
+              </div>
+              <div class="cluster center">
+                <div class="shoulders">
+                  <button class="face wide" data-btn="LT">LT</button>
+                  <button class="face wide" data-btn="RT">RT</button>
+                </div>
+                <div class="shoulders">
+                  <button class="face wide" data-btn="LB">LB</button>
+                  <button class="face wide" data-btn="RB">RB</button>
+                </div>
+                <div class="menu-row">
+                  <button class="face small" data-btn="BACK">BACK</button>
+                  <button class="face small" data-btn="START">START</button>
+                </div>
+                <div class="sticks">
+                  <div class="stick" data-stick="left">
+                    <div class="nub" id="nub-l"></div>
+                    <span>LS</span>
+                  </div>
+                  <div class="stick" data-stick="right">
+                    <div class="nub" id="nub-r"></div>
+                    <span>RS</span>
+                  </div>
+                </div>
+              </div>
+              <div class="cluster right">
+                <button class="face y" data-btn="Y">Y</button>
+                <div class="mid">
+                  <button class="face x" data-btn="X">X</button>
+                  <button class="face b" data-btn="B">B</button>
+                </div>
+                <button class="face a" data-btn="A">A</button>
+              </div>
+              </div>
+            </div>
+            <p class="hint">Clique num botão do desenho para escolher tecla ou clique do mouse. F12 liga e desliga o mapeamento.</p>
+          </article>
+
+          <article class="card">
+            <h2>Analogicos</h2>
+            <label class="field">
+              Stick esquerdo
+              <select id="left-stick">
+                <option value="off">Desligado</option>
+                <option value="mouse">Mover mouse</option>
+                <option value="wasd">WASD</option>
+                <option value="arrows">Setas</option>
+              </select>
+            </label>
+            <label class="field">
+              Stick direito
+              <select id="right-stick">
+                <option value="off">Desligado</option>
+                <option value="mouse">Mover mouse</option>
+                <option value="wasd">WASD</option>
+                <option value="arrows">Setas</option>
+              </select>
+            </label>
+            <label class="field">
+              Sensibilidade do mouse
+              <input type="range" id="sensitivity" min="1" max="40" step="1" />
+              <em id="sensitivity-val">14</em>
+            </label>
+            <label class="field">
+              Deadzone
+              <input type="range" id="deadzone" min="0" max="40" step="1" />
+              <em id="deadzone-val">0.14</em>
+            </label>
+            <label class="field">
+              Curva
+              <select id="curve">
+                <option value="linear">Linear</option>
+                <option value="quadratic">Quadrática (precisa no centro)</option>
+                <option value="cubic">Cúbica</option>
+              </select>
+            </label>
+            <label class="check">
+              <input type="checkbox" id="invert-y" />
+              Inverter eixo Y do mouse
+            </label>
+            <p class="hint">F12 liga e desliga o mapeamento. F8 para qualquer sequência.</p>
+          </article>
+
+          <article class="card binds-card">
+            <h2>Atalhos dos botões</h2>
+            <div id="bind-list" class="bind-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="view-seq" class="view hidden">
+        <div class="seq-toolbar">
+          <select id="seq-select"></select>
+          <button type="button" id="seq-new" class="ghost">Nova</button>
+          <button type="button" id="seq-dup" class="ghost">Duplicar</button>
+          <button type="button" id="seq-del" class="ghost danger">Apagar</button>
+          <label class="field inline">
+            Nome
+            <input type="text" id="seq-name" />
+          </label>
+          <label class="field inline">
+            Atraso inicial (ms)
+            <input type="number" id="seq-start" min="0" step="50" />
+          </label>
+          <label class="field inline">
+            Repetir
+            <input type="number" id="seq-repeat" min="1" max="999" />
+          </label>
+          <label class="field inline">
+            Botão no controle
+            <select id="seq-pad-bind"></select>
+          </label>
+          <div class="toolbar-actions">
+            <button type="button" id="seq-play" class="primary">Executar</button>
+            <button type="button" id="seq-stop">Parar</button>
+          </div>
+        </div>
+        <p class="hint" id="seq-status">Os três exemplos abaixo mostram os tipos de passo. Duplique um template e edite — tudo é salvo no seu PC. Atribua um botão do controle para disparar com o mapeamento ligado (F12).</p>
+        <div id="seq-library" class="seq-library"></div>
+        <div id="steps" class="steps"></div>
+        <div class="add-row">
+          <span>Adicionar passo</span>
+          <button type="button" data-add="mouse_move">Mover mouse</button>
+          <button type="button" data-add="mouse_click">Clique</button>
+          <button type="button" data-add="mouse_down">Segurar clique</button>
+          <button type="button" data-add="mouse_up">Soltar clique</button>
+          <button type="button" data-add="key_tap">Tecla</button>
+          <button type="button" data-add="wait">Esperar</button>
+          <button type="button" data-add="wheel">Scroll</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="credit">
+      <p>PadDesk · desenvolvido por <strong>Victor Emanuel Lobato</strong></p>
+    </footer>
+  </div>
+
+  <div id="overlay" class="overlay hidden">
+    <div>
+      <p id="overlay-title">Posicione o mouse</p>
+      <strong id="overlay-count">2.0s</strong>
+    </div>
+  </div>
+
+  <div id="bind-modal" class="overlay hidden">
+    <form class="modal" id="bind-form">
+      <h3 id="bind-title">Botão A</h3>
+      <label class="field">
+        Tipo
+        <select id="bind-kind">
+          <option value="none">Nada</option>
+          <option value="mouse">Clique do mouse</option>
+          <option value="key">Tecla</option>
+          <option value="sequence">Sequência</option>
+        </select>
+      </label>
+      <label class="field" id="bind-mouse-wrap">
+        Botão do mouse
+        <select id="bind-mouse">
+          <option value="left">Esquerdo</option>
+          <option value="right">Direito</option>
+          <option value="middle">Meio</option>
+        </select>
+      </label>
+      <label class="field" id="bind-key-wrap">
+        Tecla
+        <select id="bind-key"></select>
+      </label>
+      <label class="field" id="bind-seq-wrap">
+        Sequência
+        <select id="bind-seq"></select>
+      </label>
+      <div class="modal-actions">
+        <button type="button" id="bind-cancel">Cancelar</button>
+        <button type="submit" class="primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

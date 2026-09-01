@@ -1,0 +1,73 @@
+{
+  "mapper": {
+    "enabled": false,
+    "leftStick": "wasd",
+    "rightStick": "mouse",
+    "sensitivity": 14,
+    "deadzone": 0.14,
+    "invertY": false,
+    "curve": "quadratic",
+    "triggerThreshold": 0.35,
+    "paddleMap": {},
+    "binds": {
+      "A": { "kind": "mouse", "button": "left" },
+      "B": { "kind": "mouse", "button": "right" },
+      "X": { "kind": "key", "key": "SPACE" },
+      "Y": { "kind": "key", "key": "F" },
+      "LB": { "kind": "key", "key": "Q" },
+      "RB": { "kind": "key", "key": "E" },
+      "LT": { "kind": "mouse", "button": "right" },
+      "RT": { "kind": "mouse", "button": "left" },
+      "START": { "kind": "key", "key": "ESC" },
+      "BACK": { "kind": "none" },
+      "LS": { "kind": "none" },
+      "RS": { "kind": "none" },
+      "DUP": { "kind": "key", "key": "UP" },
+      "DDOWN": { "kind": "key", "key": "DOWN" },
+      "DLEFT": { "kind": "key", "key": "LEFT" },
+      "DRIGHT": { "kind": "key", "key": "RIGHT" },
+      "M1": { "kind": "none" },
+      "M2": { "kind": "none" },
+      "M3": { "kind": "none" },
+      "M4": { "kind": "none" }
+    }
+  },
+  "activeSequenceId": "tpl-mouse",
+  "sequences": [
+    {
+      "id": "tpl-mouse",
+      "name": "Exemplo — mover e clicar",
+      "repeat": 1,
+      "startDelayMs": 1500,
+      "steps": [
+        { "id": "a", "type": "mouse_move", "x": 400, "y": 300, "ms": 250 },
+        { "id": "b", "type": "mouse_click", "button": "left", "ms": 40 },
+        { "id": "c", "type": "wait", "ms": 200 }
+      ]
+    },
+    {
+      "id": "tpl-keys",
+      "name": "Exemplo — teclas em sequência",
+      "repeat": 1,
+      "startDelayMs": 1500,
+      "steps": [
+        { "id": "a", "type": "key_tap", "key": "F1", "ms": 80 },
+        { "id": "b", "type": "wait", "ms": 300 },
+        { "id": "c", "type": "key_tap", "key": "F2", "ms": 80 },
+        { "id": "d", "type": "wait", "ms": 300 },
+        { "id": "e", "type": "key_tap", "key": "F3", "ms": 80 }
+      ]
+    },
+    {
+      "id": "tpl-mod",
+      "name": "Exemplo — tecla com modificador",
+      "repeat": 1,
+      "startDelayMs": 1500,
+      "steps": [
+        { "id": "a", "type": "key_down", "key": "CTRL", "ms": 40 },
+        { "id": "b", "type": "key_tap", "key": "C", "ms": 50 },
+        { "id": "c", "type": "key_up", "key": "CTRL", "ms": 40 }
+      ]
+    }
+  ]
+}
