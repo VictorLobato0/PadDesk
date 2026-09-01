@@ -25,7 +25,6 @@ HID_USAGE_PAGE_GENERIC = 0x01
 WS_POPUP = 0x80000000
 WS_EX_NOACTIVATE = 0x08000000
 WS_EX_TOOLWINDOW = 0x00000080
-HWND_MESSAGE = wintypes.HWND(-3)
 
 AXIS_USAGES = (0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x39)
 
@@ -34,6 +33,11 @@ WPARAM = ctypes.c_size_t
 LPARAM = ctypes.c_ssize_t
 HWND = wintypes.HWND
 UINT = wintypes.UINT
+HANDLE = wintypes.HANDLE
+HICON = wintypes.HICON
+HBRUSH = wintypes.HBRUSH
+HINSTANCE = wintypes.HINSTANCE
+HMENU = wintypes.HMENU
 WNDPROC = ctypes.WINFUNCTYPE(LRESULT, HWND, UINT, WPARAM, LPARAM)
 
 
@@ -95,10 +99,10 @@ class WNDCLASSW(Structure):
         ("lpfnWndProc", WNDPROC),
         ("cbClsExtra", c_int),
         ("cbWndExtra", c_int),
-        ("hInstance", wintypes.HINSTANCE),
-        ("hIcon", wintypes.HICON),
-        ("hCursor", wintypes.HCURSOR),
-        ("hbrBackground", wintypes.HBRUSH),
+        ("hInstance", HINSTANCE),
+        ("hIcon", HICON),
+        ("hPointer", HANDLE),
+        ("hbrBackground", HBRUSH),
         ("lpszMenuName", wintypes.LPCWSTR),
         ("lpszClassName", wintypes.LPCWSTR),
     ]
@@ -118,7 +122,7 @@ class MSG(Structure):
 user32.RegisterClassW.argtypes = (POINTER(WNDCLASSW),)
 user32.RegisterClassW.restype = wintypes.ATOM
 kernel32.GetModuleHandleW.argtypes = (wintypes.LPCWSTR,)
-kernel32.GetModuleHandleW.restype = wintypes.HINSTANCE
+kernel32.GetModuleHandleW.restype = HINSTANCE
 user32.CreateWindowExW.argtypes = (
     wintypes.DWORD,
     wintypes.LPCWSTR,
@@ -129,8 +133,8 @@ user32.CreateWindowExW.argtypes = (
     c_int,
     c_int,
     HWND,
-    wintypes.HMENU,
-    wintypes.HINSTANCE,
+    HMENU,
+    HINSTANCE,
     c_void_p,
 )
 user32.CreateWindowExW.restype = HWND

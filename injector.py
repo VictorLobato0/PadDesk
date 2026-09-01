@@ -120,7 +120,6 @@ user32.SendInput.argtypes = (c_ulong, POINTER(INPUT), ctypes.c_int)
 user32.SendInput.restype = c_ulong
 user32.SetCursorPos.argtypes = (ctypes.c_int, ctypes.c_int)
 user32.SetCursorPos.restype = ctypes.c_int
-user32.GetCursorPos.restype = ctypes.c_int
 user32.GetSystemMetrics.argtypes = (ctypes.c_int,)
 user32.GetSystemMetrics.restype = ctypes.c_int
 user32.MapVirtualKeyW.argtypes = (c_ulong, c_ulong)
@@ -131,6 +130,10 @@ user32.GetAsyncKeyState.restype = ctypes.c_short
 
 class POINT(Structure):
     _fields_ = [("x", c_long), ("y", c_long)]
+
+
+user32.GetCursorPos.argtypes = (POINTER(POINT),)
+user32.GetCursorPos.restype = ctypes.c_int
 
 
 def key_names() -> list[str]:

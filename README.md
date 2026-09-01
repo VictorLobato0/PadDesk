@@ -8,19 +8,16 @@ A interface abre em `http://127.0.0.1:8765` e só escuta localmente.
 
 ## Requisitos
 
-- Windows
-- [Python 3.10+](https://www.python.org/downloads/) (sem bibliotecas extras — só a stdlib)
+- Windows 10 ou 11
+- [Python 3.10 ou mais novo](https://www.python.org/downloads/) (3.10, 3.11, 3.12, 3.13 ou 3.14). Sem bibliotecas extras.
+
+Na instalação do Python, marque **Add python.exe to PATH**.
 
 ## Como rodar
 
-1. Clone o repositório.
-2. Dê dois cliques em `start.bat`, ou no terminal:
-
-```bat
-python app.py
-```
-
-3. O navegador abre sozinho. **F12** liga/desliga o mapeamento. **F11** para qualquer sequência.
+1. Baixe o ZIP do GitHub ou clone o repositório e extraia a pasta.
+2. Dê dois cliques em `start.bat` (ou no terminal: `py -3 app.py`).
+3. O navegador abre sozinho em `http://127.0.0.1:8765`. **F12** liga/desliga o mapeamento. **F11** para qualquer sequência.
 
 ## Controles suportados
 

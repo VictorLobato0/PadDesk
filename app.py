@@ -6,11 +6,20 @@ Desenvolvido por Victor Emanuel Lobato.
 from __future__ import annotations
 
 import json
+import sys
 import threading
 import webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
+
+if sys.platform != "win32":
+    print("PadDesk so funciona no Windows.")
+    sys.exit(1)
+if sys.version_info < (3, 10):
+    print("PadDesk precisa do Python 3.10 ou mais novo.")
+    print("Baixe em https://www.python.org/downloads/ e marque Add python.exe to PATH.")
+    sys.exit(1)
 
 import gamepad
 import injector
