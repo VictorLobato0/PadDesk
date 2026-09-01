@@ -198,6 +198,8 @@ def snapshot() -> dict:
         "connected": bool(pad.get("connected")),
         "buttons": pad.get("buttons") or {},
         "axes": pad.get("axes") or {},
+        "padName": pad.get("name") or "",
+        "padSource": pad.get("source") or "",
         "mouse": {"x": mx, "y": my},
         "screen": injector.screen_info(),
         "mapperEnabled": mapper.enabled(),

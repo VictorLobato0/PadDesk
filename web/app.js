@@ -79,7 +79,7 @@ function renderHeader() {
   $("mouse-xy").textContent = `${state.mouse.x}, ${state.mouse.y}`;
   $("screen-size").textContent = `${state.screen.w}×${state.screen.h}`;
   const pad = $("pad-stat");
-  $("pad-label").textContent = state.connected ? "conectado" : "desconectado";
+  $("pad-label").textContent = state.connected ? (state.padName || "conectado") : "desconectado";
   pad.classList.toggle("ok", state.connected);
   pad.classList.toggle("off", !state.connected);
   $("mapper-toggle").checked = !!state.mapperEnabled;

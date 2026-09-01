@@ -1,6 +1,6 @@
 # PadDesk
 
-Mapeia um controle (Xbox / XInput e paddles extras) para mouse e teclado no Windows, com um editor de sequências temporizadas.
+Adapta jogos de teclado e mouse para uso com controles **Xbox** e **PlayStation** no Windows, com mapeamento de botões e sequências temporizadas.
 
 **Desenvolvido por Victor Emanuel Lobato**
 
@@ -21,6 +21,14 @@ python app.py
 ```
 
 3. O navegador abre sozinho. **F12** liga/desliga o mapeamento. **F8** para qualquer sequência.
+
+## Controles suportados
+
+- **Xbox** 360 / One / Series / Elite (XInput, inclusive o slot 2–4)
+- **PlayStation** DualShock 3 / 4 e DualSense / DualSense Edge (USB ou Bluetooth)
+- Outros pads genéricos visíveis no Windows (DirectInput / HID)
+
+Cross, Circle, Square e Triangle do PlayStation entram como A, B, X e Y na interface.
 
 ## Sequências de exemplo
 
