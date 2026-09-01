@@ -116,12 +116,36 @@ class MSG(Structure):
 
 
 user32.RegisterClassW.argtypes = (POINTER(WNDCLASSW),)
+user32.RegisterClassW.restype = wintypes.ATOM
+kernel32.GetModuleHandleW.argtypes = (wintypes.LPCWSTR,)
+kernel32.GetModuleHandleW.restype = wintypes.HINSTANCE
+user32.CreateWindowExW.argtypes = (
+    wintypes.DWORD,
+    wintypes.LPCWSTR,
+    wintypes.LPCWSTR,
+    wintypes.DWORD,
+    c_int,
+    c_int,
+    c_int,
+    c_int,
+    HWND,
+    wintypes.HMENU,
+    wintypes.HINSTANCE,
+    c_void_p,
+)
 user32.CreateWindowExW.restype = HWND
 user32.DefWindowProcW.argtypes = (HWND, UINT, WPARAM, LPARAM)
 user32.DefWindowProcW.restype = LRESULT
 user32.GetRawInputData.argtypes = (c_void_p, c_uint, c_void_p, POINTER(c_uint), c_uint)
+user32.GetRawInputData.restype = c_uint
 user32.GetRawInputDeviceInfoW.argtypes = (c_void_p, c_uint, c_void_p, POINTER(c_uint))
+user32.GetRawInputDeviceInfoW.restype = c_uint
 user32.RegisterRawInputDevices.argtypes = (POINTER(RAWINPUTDEVICE), c_uint, c_uint)
+user32.RegisterRawInputDevices.restype = wintypes.BOOL
+user32.GetMessageW.argtypes = (POINTER(MSG), HWND, c_uint, c_uint)
+user32.GetMessageW.restype = c_int
+user32.TranslateMessage.argtypes = (POINTER(MSG),)
+user32.DispatchMessageW.argtypes = (POINTER(MSG),)
 
 hid.HidP_GetUsages.restype = ctypes.c_long
 hid.HidP_GetCaps.restype = ctypes.c_long
