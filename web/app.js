@@ -2,7 +2,7 @@ const LABELS = {
   A: "A", B: "B", X: "X", Y: "Y",
   LB: "LB (traseira)", RB: "RB (traseira)", LT: "LT (traseira)", RT: "RT (traseira)",
   M1: "M1 (paddle)", M2: "M2 (paddle)", M3: "M3 (paddle)", M4: "M4 (paddle)",
-  START: "Start", BACK: "Back", LS: "LS click", RS: "RS click",
+  START: "Start", BACK: "Back", LS: "L3 (stick esquerdo)", RS: "R3 (stick direito)",
   DUP: "D-pad ↑", DDOWN: "D-pad ↓", DLEFT: "D-pad ←", DRIGHT: "D-pad →",
 };
 

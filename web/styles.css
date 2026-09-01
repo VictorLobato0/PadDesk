@@ -156,7 +156,10 @@ html, body {
   width: 92px; height: 92px; border-radius: 50%;
   border: 1px solid var(--line); background: #191410;
   position: relative;
+  padding: 0;
+  color: inherit;
 }
+.stick.on { outline: 2px solid var(--accent-2); box-shadow: 0 0 0 4px rgba(242, 193, 78, 0.2); }
 .nub {
   width: 28px; height: 28px; border-radius: 50%;
   background: var(--accent);
