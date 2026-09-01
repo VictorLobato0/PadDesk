@@ -2,7 +2,7 @@
 
 Mapeia um controle (Xbox / XInput e paddles extras) para mouse e teclado no Windows, com um editor de sequências temporizadas.
 
-**Desenvolvido por [Victor Emanuel Lobato](https://github.com/dmgqquateen)**
+**Desenvolvido por Victor Emanuel Lobato**
 
 A interface abre em `http://127.0.0.1:8765` e só escuta localmente.
 
